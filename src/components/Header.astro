@@ -4,7 +4,7 @@ import logo from '../assets/logo.png';
 const { currentPage } = Astro.props;
 ---
 
-<header class="bg-white shadow-md relative">
+<header class="bg-white shadow-md sticky top-0 z-30">
   <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
     
     <a href="/" class="flex items-center space-x-3">
@@ -15,10 +15,10 @@ const { currentPage } = Astro.props;
     </a>
 
     <div class="md:hidden">
-      <button id="hamburger-button" class="text-gray-800 focus:outline-none">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
+      <button id="hamburger-button" class="text-gray-800 focus:outline-none z-50 relative">
+        {/* El ícono cambiará entre hamburguesa y "X" */}
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
 
@@ -29,22 +29,40 @@ const { currentPage } = Astro.props;
     </div>
 
   </nav>
-
-  <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full shadow-md">
-    <a href="/" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
-    <a href="/projects" class="block py-2 px-4 text-sm hover:bg-gray-100">Projects</a>
-    <a href="/contact" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
-  </div>
-
 </header>
+
+<div id="menu-backdrop" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden"></div>
+
+<div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-brand-blue shadow-lg z-30 transform translate-x-full transition-transform duration-300 ease-in-out">
+  <nav class="pt-24 p-4">
+    <a href="/" class="block py-3 px-4 text-white hover:bg-white/10 rounded-lg text-xl">Home</a>
+    <a href="/projects" class="block py-3 px-4 text-white hover:bg-white/10 rounded-lg text-xl">Projects</a>
+    <a href="/contact" class="block py-3 px-4 text-white hover:bg-white/10 rounded-lg text-xl">Contact</a>
+  </nav>
+</div>
+
 
 <script>
   const hamburgerButton = document.querySelector('#hamburger-button');
-  const mobileMenu = document.querySelector('#mobile-menu');
+  const mobileMenu = document.querySelector<HTMLElement>('#mobile-menu');
+  const menuBackdrop = document.querySelector<HTMLElement>('#menu-backdrop');
+  const hamburgerIcon = document.querySelector('#hamburger-icon');
+  const closeIcon = document.querySelector('#close-icon');
 
-  if (hamburgerButton && mobileMenu) {
-    hamburgerButton.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+  function toggleMenu() {
+    if (mobileMenu && menuBackdrop && hamburgerIcon && closeIcon) {
+      mobileMenu.classList.toggle('translate-x-full');
+      menuBackdrop.classList.toggle('hidden');
+      
+      hamburgerIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    }
+  }
+
+  if (hamburgerButton) {
+    hamburgerButton.addEventListener('click', toggleMenu);
+  }
+  if (menuBackdrop) {
+    menuBackdrop.addEventListener('click', toggleMenu);
   }
 </script>
