@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+const { currentPage } = Astro.props;
+---
+<header class="bg-gray-100 shadow-md">
+  <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="flex items-center space-x-3">
+      <Image src={logo} alt="Mendez Construction LLC Logo" width="40" height="40" />
+      <span class="text-xl font-bold text-brand-blue">
+        Mendez Construction LLC
+      </span>
+    </a>
+    <div>
+      <a href="/" class:list={["px-4 text-gray-600 hover:text-brand-orange", { "text-brand-orange font-bold": currentPage === "/" }]}>Home</a>
+      <a href="/projects" class:list={["px-4 text-gray-600 hover:text-brand-orange", { "text-brand-orange font-bold": currentPage === "/projects" }]}>Projects</a>
+      <a href="/contact" class:list={["px-4 text-gray-600 hover:text-brand-orange", { "text-brand-orange font-bold": currentPage === "/contact" }]}>Contact</a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card-overlay {
+  position: absolute;
+  inset: 0; /* Esto es lo mismo que top, bottom, left, y right en 0 */
+  z-index: 10;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%);
+}
+
+.filter-btn:hover {
+  color: #F28C28; /* brand-orange */
+  background-color: #fdeee0; /* Un naranja muy claro para el hover */
+}
+
+.filter-btn.is-checked {
+  background-color: #F28C28; /* brand-orange */
+  color: white;
+}

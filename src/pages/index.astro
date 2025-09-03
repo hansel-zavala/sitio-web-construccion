@@ -1,16 +1,107 @@
 ---
-
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import heroBg from '../assets/background.jpg'; 
+import project1 from '../assets/imagen-1.jpg';
+import project2 from '../assets/imagen-17.jpg';
+import project3 from '../assets/imagen-22.jpg';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Homepage | Mendez Construction LLC">
+  <section class="relative h-96">
+    <Image
+      src={heroBg}
+      alt="Background of a construction site"
+      class="absolute left-0 top-0 w-full h-full object-cover z-0"
+    />
+    <div class="relative w-full h-full flex items-center justify-center z-10">
+      <div class="text-center text-white">
+        <h1 class="text-5xl font-heading">
+          Quality Concrete & Brickwork
+        </h1>
+        <p class="mt-4 text-xl">
+          Building strong foundations for your future.
+        </p>
+        <a href="/contact" class="mt-8 inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded hover:bg-opacity-70 transition-opacity">
+          Get a Free Quote
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-8 text-gray-800 font-heading">Our Services</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 rounded-full mx-auto mb-4">
+            <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Concrete Work</h3>
+          <p class="text-gray-600">High-quality concrete pouring for foundations, driveways, and patios.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 rounded-full mx-auto mb-4">
+            <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18M9 4h6M9 20h6" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">Bricklaying</h3>
+          <p class="text-gray-600">Expert bricklaying for walls, facades, and custom structures.</p>
+        </div>
+
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 rounded-full mx-auto mb-4">
+            <svg class="h-8 w-8 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">General Construction</h3>
+          <p class="text-gray-600">Comprehensive construction services for residential and commercial projects.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gray-800 font-heading">Our Recent Work</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <a class="project-link group relative block overflow-hidden rounded-lg shadow-lg" data-image-src={project1.src}>
+          <Image src={project1} alt="Description of project 1" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300 z-0"/>
+          <div class="card-overlay"></div>
+          <div class="absolute inset-0 flex items-end p-4 z-20"><h3 class="text-white text-xl font-bold">Residential Concrete Pour</h3></div>
+        </a>
+        
+        <a class="project-link group relative block overflow-hidden rounded-lg shadow-lg" data-image-src={project2.src}>
+          <Image src={project2} alt="Description of project 2" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300 z-0"/>
+          <div class="card-overlay"></div>
+          <div class="absolute inset-0 flex items-end p-4 z-20"><h3 class="text-white text-xl font-bold">Custom Brick Wall</h3></div>
+        </a>
+
+        <a class="project-link group relative block overflow-hidden rounded-lg shadow-lg" data-image-src={project3.src}>
+          <Image src={project3} alt="Description of project 3" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300 z-0"/>
+          <div class="card-overlay"></div>
+          <div class="absolute inset-0 flex items-end p-4 z-20"><h3 class="text-white text-xl font-bold">Patio Installation</h3></div>
+        </a>
+
+      </div>
+      <div class="text-center mt-8">
+        <a href="/projects" class="inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded hover:bg-opacity-70 transition-colors">View All Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-brand-blue">
+    <div class="container mx-auto px-6 py-10 text-center">
+      <h2 class="text-3xl font-bold text-white font-heading">Ready to Start Your Next Project?</h2>
+      <p class="text-indigo-200 mt-2">Let's build something amazing together. Contact us for a free quote.</p>
+      <a href="/contact" class="mt-7 inline-block bg-brand-orange text-white font-bold py-3 px-6 rounded hover:bg-opacity-70 transition-colors">
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<script src="../scripts/gallery-lightbox.ts"></script>

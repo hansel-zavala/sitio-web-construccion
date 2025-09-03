@@ -1,0 +1,16 @@
+---
+// src/components/Pagination.astro
+const { page } = Astro.props;
+---
+<div class="flex justify-center space-x-4 mt-12">
+  {page.url.prev && (
+    <a href={page.url.prev} class="inline-block bg-brand-orange text-white font-bold py-2 px-6 rounded hover:bg-opacity-90 transition-colors">
+      &larr; Previous
+    </a>
+  )}
+  {page.url.next && (
+    <a href={page.url.next} class="inline-block bg-brand-orange text-white font-bold py-2 px-6 rounded hover:bg-opacity-90 transition-colors">
+      Next &rarr;
+    </a>
+  )}
+</div>

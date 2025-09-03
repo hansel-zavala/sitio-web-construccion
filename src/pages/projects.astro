@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import project1 from '../assets/imagen-1.jpg';
+import project2 from '../assets/imagen-2.jpg';
+import project3 from '../assets/imagen-3.jpg';
+import project4 from '../assets/imagen-4.jpg';
+import project5 from '../assets/imagen-5.jpg';
+import project6 from '../assets/imagen-6.jpg';
+import project7 from '../assets/imagen-7.jpg';
+import project8 from '../assets/imagen-8.jpg';
+import project9 from '../assets/imagen-9.jpg';
+import project10 from '../assets/imagen-10.jpg';
+import project11 from '../assets/imagen-11.jpg';
+import project12 from '../assets/imagen-12.jpg';
+import project13 from '../assets/imagen-13.jpg';
+import project14 from '../assets/imagen-14.jpg';
+import project15 from '../assets/imagen-15.jpg';
+import project16 from '../assets/imagen-16.jpg';
+import project17 from '../assets/imagen-17.jpg';
+import project18 from '../assets/imagen-18.jpg';
+import project19 from '../assets/imagen-19.jpg';
+import project20 from '../assets/imagen-20.jpg';
+import project21 from '../assets/imagen-21.jpg';
+import project22 from '../assets/imagen-22.jpg';
+import project23 from '../assets/imagen-23.jpg';
+import project24 from '../assets/imagen-24.jpg';
+import project25 from '../assets/imagen-25.jpg';
+import project26 from '../assets/imagen-26.jpg';
+import project27 from '../assets/imagen-27.jpg';
+import project28 from '../assets/imagen-28.jpg';
+
+const projects = [
+  { img: project1, title: 'Residential Concrete Pour', description: 'haolaaaaa' },
+  { img: project2, title: 'Custom Brick Wall', description: '...' },
+  { img: project3, title: 'Patio Installation', description: '...' },
+  { img: project4, title: 'Driveway Resurfacing', description: '...' },
+  { img: project5, title: 'Foundation Repair', description: '...' },
+  { img: project6, title: 'Commercial Concrete Work', description: '...' },
+  { img: project7, title: 'Retaining Wall Construction', description: '...' },
+  { img: project8, title: 'Pool Deck Installation', description: '...' },
+  { img: project9, title: 'Sidewalk Replacement', description: '...' },
+  { img: project10, title: 'Stamped Concrete Patio', description: '...' },
+  { img: project11, title: 'Concrete Steps Installation', description: '...' },
+  { img: project12, title: 'Asphalt Paving', description: '...' },
+  { img: project13, title: 'Concrete Slab Pouring', description: '...' },
+  { img: project14, title: 'Brick Paver Installation', description: '...' },
+  { img: project15, title: 'Concrete Curbing', description: '...' },
+  { img: project16, title: 'Excavation and Grading', description: '...' },
+  { img: project17, title: 'Site Preparation', description: '...' },
+  { img: project18, title: 'Concrete Finishing', description: '...' },
+  { img: project19, title: 'Concrete Staining', description: '...' },
+  { img: project20, title: 'Concrete Sealing', description: '...' },
+  { img: project21, title: 'Concrete Overlay', description: '...' },
+  { img: project22, title: 'Concrete Resurfacing', description: '...' },
+  { img: project23, title: 'Concrete Demolition', description: '...' },
+  { img: project24, title: 'Concrete Recycling', description: '...' },
+  { img: project25, title: 'Concrete Pumping', description: '...' },
+  { img: project26, title: 'Concrete Cutting', description: '...' },
+  { img: project27, title: 'Concrete Coring', description: '...' },
+  { img: project28, title: 'Concrete Repair', description: '...' }
+];
+---
+
+<Layout title="Our Projects | Construction Co.">
+  <div class="py-16">
+    <div class="container mx-auto px-6">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-800 font-heading">Our Work</h1>
+        <p class="text-lg text-gray-600 mt-2">
+          A showcase of our commitment to quality and craftsmanship.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map(project => (
+          <a href="#" class="gallery-item group block overflow-hidden rounded-lg shadow-lg aspect-[4/3] relative" data-title={project.title}>
+            <Image 
+              src={project.img} 
+              alt={project.description} 
+              class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300 z-0"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-4 z-20">
+              <h3 class="text-white text-xl font-bold font-heading">{project.title}</h3>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script src="../scripts/gallery-lightbox.ts"></script>
