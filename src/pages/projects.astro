@@ -31,34 +31,34 @@ import project27 from '../assets/imagen-27.jpg';
 import project28 from '../assets/imagen-28.jpg';
 
 const projects = [
-  { img: project1, title: 'Residential Concrete Pour', description: 'haolaaaaa' },
-  { img: project2, title: 'Custom Brick Wall', description: '...' },
-  { img: project3, title: 'Patio Installation', description: '...' },
-  { img: project4, title: 'Driveway Resurfacing', description: '...' },
-  { img: project5, title: 'Foundation Repair', description: '...' },
-  { img: project6, title: 'Commercial Concrete Work', description: '...' },
-  { img: project7, title: 'Retaining Wall Construction', description: '...' },
-  { img: project8, title: 'Pool Deck Installation', description: '...' },
-  { img: project9, title: 'Sidewalk Replacement', description: '...' },
-  { img: project10, title: 'Stamped Concrete Patio', description: '...' },
-  { img: project11, title: 'Concrete Steps Installation', description: '...' },
-  { img: project12, title: 'Asphalt Paving', description: '...' },
-  { img: project13, title: 'Concrete Slab Pouring', description: '...' },
-  { img: project14, title: 'Brick Paver Installation', description: '...' },
-  { img: project15, title: 'Concrete Curbing', description: '...' },
-  { img: project16, title: 'Excavation and Grading', description: '...' },
-  { img: project17, title: 'Site Preparation', description: '...' },
-  { img: project18, title: 'Concrete Finishing', description: '...' },
-  { img: project19, title: 'Concrete Staining', description: '...' },
-  { img: project20, title: 'Concrete Sealing', description: '...' },
-  { img: project21, title: 'Concrete Overlay', description: '...' },
-  { img: project22, title: 'Concrete Resurfacing', description: '...' },
-  { img: project23, title: 'Concrete Demolition', description: '...' },
-  { img: project24, title: 'Concrete Recycling', description: '...' },
-  { img: project25, title: 'Concrete Pumping', description: '...' },
-  { img: project26, title: 'Concrete Cutting', description: '...' },
-  { img: project27, title: 'Concrete Coring', description: '...' },
-  { img: project28, title: 'Concrete Repair', description: '...' }
+  { img: project1, title: '', description: '...', tags: ['BRICK'] },
+  { img: project2, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project3, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project4, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project5, title: '', description: '...', tags: ['BRICK'] },
+  { img: project6, title: '', description: '...', tags: ['BRICK'] },
+  { img: project7, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project8, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project9, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project10, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project11, title: '', description: '...', tags: ['OTHERS'] },
+  { img: project12, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project13, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project14, title: '', description: '...', tags: ['BRICK'] },
+  { img: project15, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project16, title: '', description: '...', tags: ['OTHERS'] },
+  { img: project17, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project18, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project19, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project20, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project21, title: '', description: '...', tags: ['BRICK'] },
+  { img: project22, title: '', description: '...', tags: ['OTHERS'] },
+  { img: project23, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project24, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project25, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project26, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project27, title: '', description: '...', tags: ['CONCRETE'] },
+  { img: project28, title: '', description: '...', tags: ['CONCRETE'] }
 ];
 ---
 
@@ -72,9 +72,17 @@ const projects = [
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map(project => (
-          <a href="#" class="gallery-item group block overflow-hidden rounded-lg shadow-lg aspect-[4/3] relative" data-title={project.title}>
+      <!-- Filtros de etiquetas -->
+      <div class="flex flex-wrap justify-center gap-4 mb-8">
+        <button class="tag-filter px-4 py-2 rounded bg-orange-400 text-gray-800 font-semibold hover:bg-orange-300" data-tag="all">ALL</button>
+        <button class="tag-filter px-4 py-2 rounded bg-orange-400 text-gray-800 font-semibold hover:bg-orange-300" data-tag="CONCRETE">CONCRETE</button>
+        <button class="tag-filter px-4 py-2 rounded bg-orange-400 text-gray-800 font-semibold hover:bg-orange-300" data-tag="BRICK">BRICK</button>
+        <button class="tag-filter px-4 py-2 rounded bg-orange-400 text-gray-800 font-semibold hover:bg-orange-300" data-tag="OTHERS">OTHERS</button>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, idx) => (
+          <a href="#" class={`gallery-item group block overflow-hidden rounded-lg shadow-lg aspect-[4/3] relative`} data-title={project.title} data-tags={project.tags.join(',')}>
             <Image 
               src={project.img} 
               alt={project.description} 
@@ -84,6 +92,11 @@ const projects = [
             <div class="absolute inset-0 flex items-end p-4 z-20">
               <h3 class="text-white text-xl font-bold font-heading">{project.title}</h3>
             </div>
+            <div class="absolute top-2 left-2 z-30">
+              {project.tags.map(tag => (
+                <span class="inline-block bg-brand-blue text-white text-xs font-semibold rounded px-2 py-1 mr-1 mb-1">{tag}</span>
+              ))}
+            </div>
           </a>
         ))}
       </div>
@@ -92,3 +105,31 @@ const projects = [
 </Layout>
 
 <script src="../scripts/gallery-lightbox.ts"></script>
+<script>
+  // Filtrado por etiquetas
+  document.addEventListener('DOMContentLoaded', function() {
+    const buttons = document.querySelectorAll('.tag-filter');
+    const items = document.querySelectorAll('#projects-grid .gallery-item');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tag = btn.getAttribute('data-tag') ?? '';
+        buttons.forEach(b => b.classList.remove('bg-blue-500', 'text-white'));
+        btn.classList.add('bg-blue-500', 'text-white');
+        items.forEach(item => {
+          const tagsAttr = item.getAttribute('data-tags');
+          const itemTags = tagsAttr ? tagsAttr.split(',') : [];
+          if (tag === 'all' || itemTags.includes(tag)) {
+            (item as HTMLElement).style.display = '';
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+    // Activar el filtro "Todos" por defecto
+    const defaultBtn = document.querySelector('.tag-filter[data-tag="all"]');
+    if (defaultBtn && typeof (defaultBtn as HTMLElement).click === 'function') {
+      (defaultBtn as HTMLElement).click();
+    }
+  });
+</script>
